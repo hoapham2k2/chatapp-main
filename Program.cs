@@ -19,7 +19,7 @@ builder.Services.AddCors(options =>
     {
         builder.AllowAnyMethod()
             .AllowAnyHeader()
-            .WithOrigins("http://localhost:3000")
+            .WithOrigins("https://chatapp-main-rouge.vercel.app/")
             .AllowCredentials();
     });
 });
