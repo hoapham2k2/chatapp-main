@@ -15,13 +15,12 @@ builder.Services.AddSignalR();
 //thêm cors
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("CorsPolicy", builder =>
-    {
-        builder.AllowAnyMethod()
-            .AllowAnyHeader()
-            .WithOrigins("https://chatapp-main-rouge.vercel.app/")
-            .AllowCredentials();
-    });
+    options.AddPolicy("CorsPolicy", builder => builder
+                    .WithOrigins("http://localhost:3000", "https://chatapp-main-rouge.vercel.app")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+
 });
 
 var app = builder.Build();
@@ -33,19 +32,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseRouting();
 
+app.UseAuthorization();
+//thêm cors
+app.UseCors("CorsPolicy");
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapHub<ChatHub>("/chatHub");
 });
 
-//thêm cors
-app.UseCors("CorsPolicy");
 
-app.UseAuthorization();
 
 app.MapControllers();
 
