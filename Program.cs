@@ -19,7 +19,7 @@ builder.Services.AddSignalR();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder => builder
-                    .WithOrigins("http://localhost:3000", "https://chatapp-main-rouge.vercel.app")
+                    .WithOrigins("http://localhost:3000", "https://hoapham-chatapp.vercel.app/")
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials());
