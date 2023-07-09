@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Workspace\\Template\\mysignalR\\mysignalR.csproj": {}
+    "D:\\Workspace\\PetProjects\\chatapp\\mysignalR\\mysignalR.csproj": {}
   },
   "projects": {
-    "D:\\Workspace\\Template\\mysignalR\\mysignalR.csproj": {
+    "D:\\Workspace\\PetProjects\\chatapp\\mysignalR\\mysignalR.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Workspace\\Template\\mysignalR\\mysignalR.csproj",
+        "projectUniqueName": "D:\\Workspace\\PetProjects\\chatapp\\mysignalR\\mysignalR.csproj",
         "projectName": "mysignalR",
-        "projectPath": "D:\\Workspace\\Template\\mysignalR\\mysignalR.csproj",
+        "projectPath": "D:\\Workspace\\PetProjects\\chatapp\\mysignalR\\mysignalR.csproj",
         "packagesPath": "C:\\Users\\phamq\\.nuget\\packages\\",
-        "outputPath": "D:\\Workspace\\Template\\mysignalR\\obj\\",
+        "outputPath": "D:\\Workspace\\PetProjects\\chatapp\\mysignalR\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\phamq\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -48,9 +48,33 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.19.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

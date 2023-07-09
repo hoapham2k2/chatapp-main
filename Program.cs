@@ -1,4 +1,5 @@
 using mysignalR.Hubs;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,10 +10,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//thêm signalR
+
+
+//thï¿½m signalR
 builder.Services.AddSignalR();
 
-//thêm cors
+//thï¿½m cors
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder => builder
@@ -31,21 +34,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors("CorsPolicy");
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseRouting();
 
 app.UseAuthorization();
-//thêm cors
-app.UseCors("CorsPolicy");
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapHub<ChatHub>("/chatHub");
 });
-
-
-
 app.MapControllers();
 
 app.Run();
