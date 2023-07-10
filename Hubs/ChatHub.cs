@@ -69,5 +69,28 @@ namespace mysignalR.Hubs
 
         }
 
+
+        //sự kiện gửi 1 thông báo "nhận video call" tới 1 user nào đó
+        public async Task SendVideoCallRequest(string connectionId)
+        {
+            await Clients.Client(connectionId).SendAsync("ReceiveVideoCallRequest", UserHandler.ConnectedIds.FirstOrDefault(x => x.ConnectionId == Context.ConnectionId));
+
+        }
+
+        //sự kiện gửi 1 thông báo "đồng ý video call" tới 1 user nào đó
+        public async Task SendVideoCallAccept(string connectionId)
+        {
+            await Clients.Client(connectionId).SendAsync("ReceiveVideoCallAccept", UserHandler.ConnectedIds.FirstOrDefault(x => x.ConnectionId == Context.ConnectionId));
+
+        }
+
+        //sự kiện gửi 1 thông báo "từ chối video call" tới 1 user nào đó
+        public async Task SendVideoCallReject(string connectionId)
+        {
+            await Clients.Client(connectionId).SendAsync("ReceiveVideoCallReject", UserHandler.ConnectedIds.FirstOrDefault(x => x.ConnectionId == Context.ConnectionId));
+
+        }
+
+
     }
 }
