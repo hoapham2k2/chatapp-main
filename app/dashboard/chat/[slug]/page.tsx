@@ -8,6 +8,7 @@ import IMessage from "@/types/Message";
 import CallVideoButton from "./components/CallVideoButton/CallVideoButton";
 import CallVideoRequestModal from "./components/Modal/CallVideoRequestModal";
 import useModal from "@/hook/useModal";
+import CallWaitingModal from "./components/Modal/CallWaitingModal";
 
 type Props = {
   params: {
@@ -54,18 +55,28 @@ const DetailChat = (props: Props) => {
           "_blank",
           "width=800,height=600"
         );
+        setIsCallWaiting(false);
       });
 
       connection.on("ReceiveVideoCallReject", (message) => {
         console.log("ReceiveVideoCallReject: ", message);
+        setIsCallWaiting(false);
       });
     }
   }, [connection]);
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-
-  const handleOnClose = () => {
+  const [isCallWaiting, setIsCallWaiting] = React.useState(false);
+  const handleOnCloseModalRespone = () => {
     setIsModalOpen(false);
+  };
+
+  const handleOnCloseModelRequest = () => {
+    setIsCallWaiting(false);
+  };
+
+  const setIsCallWaitingTrue = () => {
+    setIsCallWaiting(true);
   };
 
   return (
@@ -74,13 +85,23 @@ const DetailChat = (props: Props) => {
       <MessageView messages={listMessage} />
       <div className="flex">
         <InputMessage descId={slug} addMessage={addMessage} />
-        <CallVideoButton descId={slug} />
+        <CallVideoButton
+          descId={slug}
+          setIsCallWaitingTrue={setIsCallWaitingTrue}
+        />
 
         {isModalOpen && (
           <CallVideoRequestModal
             descId={videocallrequest.connectionId}
             descName={videocallrequest.userName}
-            onClose={handleOnClose}
+            onClose={handleOnCloseModalRespone}
+          />
+        )}
+        {isCallWaiting && (
+          <CallWaitingModal
+            descId={videocallrequest.connectionId}
+            descName={videocallrequest.userName}
+            onClose={handleOnCloseModelRequest}
           />
         )}
       </div>
