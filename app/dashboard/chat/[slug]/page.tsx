@@ -49,8 +49,10 @@ const DetailChat = (props: Props) => {
         console.log("ReceiveVideoCallAccept: ", message);
         // router.push(`/videocall/${message.connectionId}`);
         window.open(
-          `/videocall/${message.connectionId}?myId = ${connection.connectionId}`,
-          "_blank"
+          `/videocall/${message.connectionId}?myId=${connection.connectionId}
+        `,
+          "_blank",
+          "width=800,height=600"
         );
       });
 

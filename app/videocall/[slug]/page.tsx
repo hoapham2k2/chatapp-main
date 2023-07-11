@@ -109,13 +109,7 @@ const VideoCallPage = (props: Props) => {
         remoteStream.getTracks().forEach((track: any) => track.stop());
       }
     };
-  }, [
-    descId,
-    myid,
-    myVideoRef.current,
-    descVideoRef.current,
-    peerInstance.current,
-  ]);
+  }, []);
 
   return (
     <div className="video-container w-screen h-screen relative">

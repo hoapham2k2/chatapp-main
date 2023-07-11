@@ -20,10 +20,12 @@ const CallVideoRequestModal = (props: Props) => {
     if (props.onClose) {
       props.onClose();
       // router.push(`/videocall/${props.descId}`);
+      // window open with 800x600 and center of screen
       window.open(
         `/videocall/${props.descId}?myId=${connection.connectionId}
       `,
-        "_blank"
+        "_blank",
+        "width=800,height=600"
       );
     }
   };
