@@ -6,13 +6,14 @@ import { useRouter } from "next/navigation";
 import { IUserConnection } from "@/types/UserConnection";
 import { useAppDispatch } from "@/features/store";
 import { setUsers } from "@/features/Slice/UsersSlice/UsersSlice";
+import CallVideoRequestModal from "./dashboard/chat/[slug]/components/Modal/CallVideoRequestModal";
 
 export default function Home() {
   const [userName, setUserName] = useState<string>("");
 
+  const connection = SignalR.Instance.HubConnection;
   const dispatch = useAppDispatch();
   useEffect(() => {
-    const connection = SignalR.Instance.HubConnection;
     connection.start().then(() => {
       console.log("connection started with id: ", connection.connectionId);
     });
@@ -22,12 +23,6 @@ export default function Home() {
     });
 
     connection.on("ReceiveOnlineUsers", (data: IUserConnection[]) => {
-      // const myListData: IUserConnection[] | null =
-      //   data.filter(
-      //     (user) => user.HubConnectionId !== connection.connectionId
-      //   ) || null;
-      // console.log("List friends: ", myListData);
-      // dispatch(setUsers(myListData));
       console.log("User was received: ", data);
       dispatch(setUsers(data));
     });
@@ -41,25 +36,35 @@ export default function Home() {
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const user = e.currentTarget.username.value;
-    SignalR.Instance.HubConnection.invoke("SendUserInfo", user);
-
-    setUserName("");
+    try {
+      connection.invoke("SendUserInfo", user);
+      setUserName("");
+    } catch (error) {
+      console.log(error);
+    }
     router.push("/dashboard");
   };
 
   return (
     <form
       onSubmit={handleOnSubmit}
-      className="inline-flex flex-col [&>input]:text-black"
+      className="w-full h-full flex px-6 flex-col justify-center items-center gap-4 [&>input]:text-black"
     >
       <input
+        className="w-full p-2 border-2 rounded-xl  sm:w-96  text-center text-2xl font-bold"
         type="text"
         name="username"
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
+        placeholder="Enter your name"
       />
 
-      <button type="submit" className="border-2" disabled={!userName}>
+      <button
+        type="submit"
+        className="border-2 w-full sm:w-96   p-2 rounded-xl [&:disabled]:bg-gray-400 [&:disabled]:cursor-not-allowed [&:enabled]bg-blue-500 [&:enabled]:hover:text-white [&:enabled:hover:cursor-pointer 
+        "
+        disabled={!userName}
+      >
         Submit
       </button>
     </form>

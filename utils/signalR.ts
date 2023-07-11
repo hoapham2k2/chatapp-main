@@ -8,8 +8,15 @@ export default class SignalR {
   private _hubConnection: HubConnection; //chứa instance của class HubConnection
 
   private constructor() {
+
+    let backendUrl: string | undefined = "";
+    if (process.env.NODE_ENV === "development") {
+      backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL_DEV;
+    } else {
+      backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL_PROD;
+    }
     this._hubConnection = new HubConnectionBuilder()
-      .withUrl(`${process.env.NEXT_PUBLIC_BACKEND_URL_PROD}/chatHub`)
+      .withUrl(`${backendUrl}/chatHub`)
       .withAutomaticReconnect()
       .build();
   }

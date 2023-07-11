@@ -4,7 +4,7 @@ type Props = {};
 
 const DashboardPage = (props: Props) => {
   return (
-    <div className="w-full bg-red-200">
+    <div className="hidden sm:block sm:w-full   bg-red-200">
       <h1>Please choose a contact to chat</h1>
     </div>
   );

@@ -1,3 +1,4 @@
+import SignalR from "@/utils/signalR";
 import React from "react";
 
 type Props = {
@@ -5,7 +6,11 @@ type Props = {
 };
 
 const CallVideoButton = (props: Props) => {
-  return <button>CallVideoButton</button>;
+  const connection = SignalR.Instance.HubConnection;
+  const handleOnClick = () => {
+    connection.invoke("SendVideoCallRequest", props.descId);
+  };
+  return <button onClick={handleOnClick}>CallVideoButton</button>;
 };
 
 export default CallVideoButton;

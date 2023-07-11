@@ -25,7 +25,7 @@ const Sidebar = (props: Props) => {
   }, [listUser]);
 
   return (
-    <div className="w-[20em] border border-teal-200 flex flex-col">
+    <div className="flex-1 p-2 sm:min-w-[200px] border border-teal-200 flex flex-col">
       <ListContact />
       <UserButton userName={currentUser} />
     </div>
