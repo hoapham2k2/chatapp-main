@@ -28,7 +28,7 @@ const ListContact = (props: Props) => {
     if (connection && myList) {
       //listContact se bang myList sau khi da loai bo user dang login (user chua co connectionId)
       setListContact(
-        myList.filter((user) => user.connectionId !== connection.connectionId)
+        myList.filter((user) => user.connectionId !== connection.connectionId) //loai bo user dang login (user chua co connectionId)
       );
       console.log("ListContact: ", listContact);
 
@@ -51,29 +51,19 @@ const ListContact = (props: Props) => {
   };
 
   return (
-    <div className="flex-1  ">
-      {/* {listContact &&
-        listContact.map((user, index) => (
-          <Link
-            key={user.connectionId}
-            href={`/dashboard/chat/${user.connectionId}`}
-          >
-            <UserButton userName={user.userName} />
-          </Link>
-        ))} */}
-      {/* Liệt kê danh sách list contact của user và chọn phần tử đầu tiên trong listContact */}
+    <div className="flex flex-col px-2 mt-2 gap-2">
       {listContact &&
         listContact.map((user, index) => (
-          <div key={user.connectionId} className="flex flex-col">
+          <div key={user.connectionId} className="w-full">
             <button
               className={`${
                 selected === user.connectionId
                   ? "bg-gray-300 text-gray-700"
-                  : "text-gray-500 hover:bg-gray-300 hover:text-gray-700"
-              } flex items-center px-4 py-2 text-sm font-medium rounded-md`}
+                  : "text-gray-800 hover:bg-gray-300 hover:text-gray-700 border "
+              }  px-2 py-2 font-medium rounded-md w-full`}
               onClick={handleOnClickSelectedUser(user.connectionId)}
             >
-              {user.userName}
+              <UserButton userName={user.userName} />
             </button>
           </div>
         ))}

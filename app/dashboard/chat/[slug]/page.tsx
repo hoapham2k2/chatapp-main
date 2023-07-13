@@ -80,10 +80,10 @@ const DetailChat = (props: Props) => {
   };
 
   return (
-    <div className="p-4  sm:w-full sm:flex sm:flex-col">
-      <h1>Detail Chat</h1>
+    <div className="px-4 w-full h-full flex flex-col">
+      <h1 className="uppercase font-bold border-b py-2 mb-2">Detail Chat</h1>
       <MessageView messages={listMessage} />
-      <div className="flex">
+      <div className="p-2 pb-16 sm:pb-2 flex gap-2">
         <InputMessage descId={slug} addMessage={addMessage} />
         <CallVideoButton
           descId={slug}

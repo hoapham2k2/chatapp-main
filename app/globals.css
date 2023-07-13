@@ -25,3 +25,21 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+/* width */
+::-webkit-scrollbar {
+  /* width: 0px; */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(var(--background-start-rgb));
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--background-end-rgb));
+}
+
+
+
+

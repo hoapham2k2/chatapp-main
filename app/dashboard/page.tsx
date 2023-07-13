@@ -4,8 +4,10 @@ type Props = {};
 
 const DashboardPage = (props: Props) => {
   return (
-    <div className="hidden sm:block sm:w-full   bg-red-200">
-      <h1>Please choose a contact to chat</h1>
+    <div className={`w-full h-full `}>
+      <h1 className={`text-2xl text-center pt-10`}>
+        Please choose a contact to start a conversation
+      </h1>
     </div>
   );
 };
