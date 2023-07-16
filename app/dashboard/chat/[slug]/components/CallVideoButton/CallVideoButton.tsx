@@ -13,7 +13,11 @@ const CallVideoButton = (props: Props) => {
     connection.invoke("SendVideoCallRequest", props.descId);
     props.setIsCallWaitingTrue();
   };
-  return <BsCameraVideoFill onClick={handleOnClick} className="w-6 h-auto " />;
+  return (
+    <div className="p-2 border-2 rounded-full">
+      <BsCameraVideoFill onClick={handleOnClick} className="w-6 h-auto " />
+    </div>
+  );
 };
 
 export default CallVideoButton;
