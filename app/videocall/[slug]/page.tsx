@@ -294,7 +294,7 @@ const VideoCallPage = (props: Props) => {
             />
           )}
         </div>
-        <div className="p-3 rounded-full border-2">
+        <div className="hidden sm:block p-3 rounded-full border-2">
           {/* <input
             type="checkbox"
             checked={isShareScreenOn}
@@ -306,12 +306,12 @@ const VideoCallPage = (props: Props) => {
           <label htmlFor="share-screen">Share Screen</label> */}
           {isShareScreenOn ? (
             <PiScreencastBold
-              className={`w-[2rem] h-auto`}
+              className={` w-[2rem] h-auto`}
               onClick={handleOnShareScreenClick}
             />
           ) : (
             <MdOutlineStopScreenShare
-              className={`w-[2rem] h-auto`}
+              className={` w-[2rem] h-auto`}
               onClick={handleOnShareScreenClick}
             />
           )}
