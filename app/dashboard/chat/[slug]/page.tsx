@@ -52,8 +52,8 @@ const DetailChat = (props: Props) => {
         window.open(
           `/videocall/${message.connectionId}?myId=${connection.connectionId}
         `,
-          "_blank",
-          "width=800,height=600"
+          "This is from receiver",
+          "width=800,height=600,top=0,right=0" // <- This is what makes it open in a new window with the specified dimensions and position (top, left, etc.)
         );
         setIsCallWaiting(false);
       });

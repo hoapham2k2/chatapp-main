@@ -24,8 +24,8 @@ const CallVideoRequestModal = (props: Props) => {
       window.open(
         `/videocall/${props.descId}?myId=${connection.connectionId}
       `,
-        "_blank",
-        "width=800,height=600"
+        "this is from caller",
+        "width=800,height=600,top=0,left=0" // <- This is what makes it open in a new window with the specified dimensions and position (top, left, etc.)
       );
     }
   };
